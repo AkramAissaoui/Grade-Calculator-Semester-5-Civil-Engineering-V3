@@ -122,7 +122,7 @@ const translations = {
     }
   },
   ar: {
-    title: 'حاسبة',
+    title: 'حاسب',
     titleHighlight: 'المعدل',
     subtitle: 'الفصل الخامس - هندسة مدنية',
     startButton: 'ابدأ',
