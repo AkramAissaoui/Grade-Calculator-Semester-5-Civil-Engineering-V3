@@ -122,7 +122,7 @@ const translations = {
     }
   },
   ar: {
-    title: 'حاسب',
+    title: 'حاسبة',
     titleHighlight: 'المعدل',
     subtitle: 'الفصل الخامس - هندسة مدنية',
     startButton: 'ابدأ',
@@ -147,7 +147,7 @@ const translations = {
     structureDesc: 'تنظيم واضح للوحدات حسب الفئة والمعامل.',
     performance: 'الأداء',
     performanceDesc: 'تتبع تقدمك في الوقت الفعلي من فصل إلى آخر.',
-    footerTitle: 'حاسب المعدل',
+    footerTitle: 'حاسبة المعدل',
     footerSubtitle: 'هندسة مدنية - الفصل الخامس',
     copyright: '© 2026 حاسبة المعدل - الهندسة المدنية. جميع الحقوق محفوظة.',
     gradeLabels: {
@@ -159,12 +159,12 @@ const translations = {
     },
     moduleNames: {
       beton: 'الخرسانة المسلحة 2',
-      sol: 'ميكانيك التربة 2',
+      sol: 'ميكانيكا التربة 2',
       materiaux: 'مواد البناء 2',
       rdm: 'مقاومة المواد 3',
       charpente: 'الهياكل المعدنية 2',
       topo: 'الطبوغرافيا 2',
-      dessin: 'الرسم التقني',
+      dessin: 'الرسم الهندسي',
       dao: 'التصميم بمساعدة الحاسوب 2',
       anglais: 'الإنجليزية التقنية'
     }
@@ -211,24 +211,32 @@ const calculateModuleAverage = (grades: Grades, module: Module): number => {
   const tp = parseFloat(grades.tp) || 0
   const exam = parseFloat(grades.exam) || 0
 
-  let sum = 0
-  let count = 0
-
-  if (module.hasTD && grades.td) {
-    sum += td * 0.4
-    count += 0.4
-  }
-  if (module.hasTP && grades.tp) {
-    sum += tp * 0.4
-    count += 0.4
-  }
-  if (module.hasExam && grades.exam) {
-    sum += exam * 0.6
-    count += 0.6
+  // Case 1: TD + TP + Exam -> average = TD * 0.2 + TP * 0.2 + Exam * 0.6
+  if (module.hasTD && module.hasTP && module.hasExam) {
+    return td * 0.2 + tp * 0.2 + exam * 0.6
   }
 
-  if (count === 0) return 0
-  return sum / count * (count / (module.hasTD && module.hasTP ? 1 : module.hasTD || module.hasTP ? 1 : 1))
+  // Case 2: TD + Exam only -> average = TD * 0.4 + Exam * 0.6
+  if (module.hasTD && !module.hasTP && module.hasExam) {
+    return td * 0.4 + exam * 0.6
+  }
+
+  // Case 3: TP + Exam only -> average = TP * 0.4 + Exam * 0.6
+  if (!module.hasTD && module.hasTP && module.hasExam) {
+    return tp * 0.4 + exam * 0.6
+  }
+
+  // Case 4: Only Exam
+  if (!module.hasTD && !module.hasTP && module.hasExam) {
+    return exam
+  }
+
+  // Case 5: Only TP (e.g., Dessin du BTP)
+  if (!module.hasTD && module.hasTP && !module.hasExam) {
+    return tp
+  }
+
+  return 0
 }
 
 // Calculate weighted average
