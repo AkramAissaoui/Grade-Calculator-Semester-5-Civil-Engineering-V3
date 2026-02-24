@@ -115,7 +115,7 @@ const translations = {
       materiaux: 'Construction Materials 2',
       rdm: 'Strength of Materials 3',
       charpente: 'Steel Structure 2',
-      topo: 'Surveying 2',
+      topo: 'Topography 2',
       dessin: 'Technical Drawing',
       dao: 'CAD 2',
       anglais: 'Technical English'
@@ -140,7 +140,7 @@ const translations = {
     yourAverage: 'معدلك للفصل الدراسي',
     coefficients: 'المعاملات',
     modules: 'الوحدات',
-    validation: 'النجاح',
+    validation: 'ناجح',
     precision: 'الدقة',
     precisionDesc: 'حساب دقيق بناءً على معاملات البرنامج الرسمية.',
     structure: 'البنية',
@@ -314,9 +314,9 @@ const LanguageSwitcher = ({
   }, [])
 
   const languages: { code: Language; label: string; flag: string }[] = [
-    { code: 'fr', label: 'Français', flag: '🇫🇷' },
-    { code: 'en', label: 'English', flag: '🇬🇧' },
-    { code: 'ar', label: 'العربية', flag: '🇸🇦' }
+    { code: 'fr', label: 'Français', flag: 'FR' },
+    { code: 'en', label: 'English', flag: 'EN' },
+    { code: 'ar', label: 'العربية', flag: '' }
   ]
 
   const currentLanguage = languages.find(l => l.code === currentLang)
