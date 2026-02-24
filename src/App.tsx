@@ -147,7 +147,7 @@ const translations = {
     structureDesc: 'تنظيم واضح للوحدات حسب الفئة والمعامل.',
     performance: 'الأداء',
     performanceDesc: 'تتبع تقدمك في الوقت الفعلي من فصل إلى آخر.',
-    footerTitle: 'حاسبة المعدل',
+    footerTitle: 'حاسب المعدل',
     footerSubtitle: 'هندسة مدنية - الفصل الخامس',
     copyright: '© 2026 حاسبة المعدل - الهندسة المدنية. جميع الحقوق محفوظة.',
     gradeLabels: {
@@ -159,12 +159,12 @@ const translations = {
     },
     moduleNames: {
       beton: 'الخرسانة المسلحة 2',
-      sol: 'ميكانيكا التربة 2',
+      sol: 'ميكانيك التربة 2',
       materiaux: 'مواد البناء 2',
       rdm: 'مقاومة المواد 3',
       charpente: 'الهياكل المعدنية 2',
       topo: 'الطبوغرافيا 2',
-      dessin: 'الرسم الهندسي',
+      dessin: 'الرسم التقني',
       dao: 'التصميم بمساعدة الحاسوب 2',
       anglais: 'الإنجليزية التقنية'
     }
